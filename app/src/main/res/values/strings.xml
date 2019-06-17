@@ -1,3 +1,21 @@
 <resources>
     <string name="app_name">Popular Movies</string>
+    <string name="menu_title">Sort</string>
+
+    <string name="base_url">http://api.themoviedb.org/3/</string>
+    <string name="base_image_url">http://image.tmdb.org/t/p/w780</string>
+
+    <string name="movies_api_sort_type_popular">popular</string>
+    <string name="movies_api_sort_type_top_rated">top_rated</string>
+
+    <string name="movies_sort_spinner_option_popular">Popular</string>
+    <string name="movies_sort_spinner_option_top_rated">Top Rated</string>
+
+    <string name="movies_sort_toast_popular">Viewing Popular Movies</string>
+    <string name="movies_sort_toast_top_rated">Viewing Top Rated</string>
+
+    <string-array name="sort_options">
+        <item>@string/movies_sort_spinner_option_popular</item>
+        <item>@string/movies_sort_spinner_option_top_rated</item>
+    </string-array>
 </resources>
