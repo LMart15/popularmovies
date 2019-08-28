@@ -16,7 +16,7 @@ final class ApiAuthenticationInterceptor implements Interceptor {
         HttpUrl originalUrl = original.url();
 
         HttpUrl authUrl = originalUrl.newBuilder()
-                .addQueryParameter("api_key", "aa2e8403d5a1fef97cc21fdc077e2ec6")
+                .addQueryParameter("api_key", null)
                 .build();
 
         Request.Builder requestBuilder = original.newBuilder()

@@ -66,6 +66,9 @@ public class MovieListActivity extends AppCompatActivity implements MovieListAda
             moviesRv.setLayoutManager(layoutManager);
 
             moviesViewModel.getMoviesListObservable().observe(this, movieListObserver);
+        } else {
+
+            Toast.makeText(this, getString(R.string.movies_network_offline_notification), Toast.LENGTH_LONG).show();
         }
     }
 
@@ -84,13 +87,16 @@ public class MovieListActivity extends AppCompatActivity implements MovieListAda
         sortOptionsSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                if (sortOptionsSpinner.getSelectedItem().toString().equals(getString(R.string.movies_sort_spinner_option_popular))) {
-                    moviesViewModel.sortMovies(POPULAR_SORT_TYPE);
-                    Toast.makeText(getApplicationContext(), getString(R.string.movies_sort_toast_popular), Toast.LENGTH_SHORT).show();
+                if (NetworkUtils.isOnline(getApplicationContext())) {
+                    if (sortOptionsSpinner.getSelectedItem().toString().equals(getString(R.string.movies_sort_spinner_option_popular))) {
+                        moviesViewModel.sortMovies(POPULAR_SORT_TYPE);
+                        Toast.makeText(getApplicationContext(), getString(R.string.movies_sort_toast_popular), Toast.LENGTH_SHORT).show();
+                    } else {
+                        moviesViewModel.sortMovies(TOP_RATED_SORT_TYPE);
+                        Toast.makeText(getApplicationContext(), getString(R.string.movies_sort_toast_top_rated), Toast.LENGTH_SHORT).show();
+                    }
                 } else {
-                    moviesViewModel.sortMovies(TOP_RATED_SORT_TYPE);
-                    Toast.makeText(getApplicationContext(), getString(R.string.movies_sort_toast_top_rated), Toast.LENGTH_SHORT).show();
-
+                    Toast.makeText(getApplicationContext(), getString(R.string.movies_network_offline_notification), Toast.LENGTH_LONG).show();
                 }
             }
 

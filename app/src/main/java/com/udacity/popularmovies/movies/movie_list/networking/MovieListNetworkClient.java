@@ -19,7 +19,7 @@ public class MovieListNetworkClient {
     private final MovieListService movieService;
 
     public MovieListNetworkClient(Context context) {
-        movieService = ServiceGenerator.createService(context.getString(R.string.base_url), MovieListService.class);
+        movieService = ServiceGenerator.createService(context.getString(R.string.movies_base_url), MovieListService.class);
     }
 
 
