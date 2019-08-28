@@ -2,6 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/movie_detail_sv"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:isScrollContainer="true">
@@ -13,7 +14,7 @@
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/movie_detail_toolbar"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@color/colorPrimary"
             app:layout_constraintEnd_toEndOf="parent"
@@ -21,53 +22,60 @@
             app:layout_constraintTop_toTopOf="parent"
             app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-        <ImageView
-            android:id="@+id/movie_detail_img"
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:id="@+id/movie_detail_img_ll"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:scaleType="fitStart"
+            android:background="@color/colorPrimaryDark"
+            android:orientation="vertical"
+            android:layout_marginBottom="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="movie_detail_toolbar" />
+            app:layout_constraintTop_toBottomOf="@+id/movie_detail_toolbar">
+
+            <ImageView
+                android:id="@+id/movie_detail_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="8dp"
+                android:scaleType="fitStart"
+                android:contentDescription="@string/movie_thumbnail_content_description" />
+
+        </LinearLayout>
+
 
         <TextView
             android:id="@+id/movie_detail_release_date"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
             android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginTop="16dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Small"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/movie_detail_img_ll"
+            app:layout_constraintTop_toBottomOf="@+id/movie_detail_img_ll"
             tools:text="11/11/11" />
 
         <RatingBar
             android:id="@+id/movie_detail_rating"
             style="?android:attr/ratingBarStyleSmall"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/movie_detail_img_ll" />
 
 
         <TextView
             android:id="@+id/movie_detail_overview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:padding="16dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/movie_detail_release_date" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

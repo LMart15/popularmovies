@@ -7,6 +7,7 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
+import com.udacity.popularmovies.R;
 import com.udacity.popularmovies.movies.movie_list.networking.MovieListNetworkClient;
 import com.udacity.popularmovies.movies.movie_list.networking.model.MoviesDto;
 
@@ -17,13 +18,13 @@ import retrofit2.Response;
 
 public class MovieListViewModel extends AndroidViewModel {
 
-    private final String DEFAULT_SORT_TYPE = "popular";
+    private final String DEFAULT_SORT_TYPE = getApplication().getString(R.string.movies_api_sort_type_popular);
 
     @NonNull
     private final MovieListNetworkClient moviesNetworkClient;
 
     @NonNull
-    private MutableLiveData<MoviesDto> moviesObservable = new MutableLiveData<>();
+    private final MutableLiveData<MoviesDto> moviesObservable = new MutableLiveData<>();
 
 
     public MovieListViewModel(Application application) {

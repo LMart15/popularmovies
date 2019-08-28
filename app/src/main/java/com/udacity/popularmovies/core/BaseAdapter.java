@@ -11,10 +11,10 @@ import java.util.List;
 public abstract class BaseAdapter<T, VH extends RecyclerView.ViewHolder> extends RecyclerView.Adapter<VH> {
 
     @NonNull
-    private AsyncListDiffer<T> differ;
+    private final AsyncListDiffer<T> differ;
 
 
-    public BaseAdapter(@NonNull final DiffUtil.ItemCallback<T> diffCallback) {
+    protected BaseAdapter(@NonNull final DiffUtil.ItemCallback<T> diffCallback) {
         differ = new AsyncListDiffer<>(this, diffCallback);
     }
 
@@ -28,8 +28,7 @@ public abstract class BaseAdapter<T, VH extends RecyclerView.ViewHolder> extends
     }
 
     @NonNull
-    public T getItem(int position) {
-        //noinspection unchecked
+    protected T getItem(int position) {
         return differ.getCurrentList().get(position);
     }
 

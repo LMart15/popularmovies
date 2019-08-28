@@ -2,14 +2,15 @@
     android:id="@+id/movie_cv"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:padding="1dp"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="1dp">
 
     <ImageView
         android:id="@+id/movie_img"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:scaleType="fitStart"
-        android:adjustViewBounds="true" />
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/movie_thumbnail_content_description"
+        android:scaleType="fitStart" />
 
 </LinearLayout>

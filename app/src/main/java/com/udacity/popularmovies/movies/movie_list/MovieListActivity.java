@@ -29,16 +29,12 @@ import butterknife.ButterKnife;
 
 public class MovieListActivity extends AppCompatActivity implements MovieListAdapter.MovieClickCallBack {
 
-    private final String POPULAR_SORT_TYPE = "popular";
-    private final String TOP_RATED_SORT_TYPE = "top_rated";
+    private MovieListViewModel moviesViewModel;
 
-    MovieListViewModel moviesViewModel;
-
-    GridLayoutManager layoutManager;
-    MovieListAdapter moviesAdapter;
+    private MovieListAdapter moviesAdapter;
 
     @NonNull
-    private Observer<MoviesDto> movieListObserver = movies -> moviesAdapter.submitList(movies.getResults());
+    private final Observer<MoviesDto> movieListObserver = movies -> moviesAdapter.submitList(movies.getResults());
 
     @BindView(R.id.movies_toolbar)
     Toolbar moviesToolbar;
@@ -66,7 +62,7 @@ public class MovieListActivity extends AppCompatActivity implements MovieListAda
             moviesAdapter = new MovieListAdapter(new MovieListDiffUtil());
             moviesAdapter.setMovieClickCallback(this);
             moviesRv.setAdapter(moviesAdapter);
-            layoutManager = new GridLayoutManager(this, 2);
+            GridLayoutManager layoutManager = new GridLayoutManager(this, 2);
             moviesRv.setLayoutManager(layoutManager);
 
             moviesViewModel.getMoviesListObservable().observe(this, movieListObserver);
@@ -75,6 +71,9 @@ public class MovieListActivity extends AppCompatActivity implements MovieListAda
 
 
     private void initSortSpinner() {
+
+        final String POPULAR_SORT_TYPE = getString(R.string.movies_api_sort_type_popular);
+        final String TOP_RATED_SORT_TYPE = getString(R.string.movies_api_sort_type_top_rated);
 
         ArrayAdapter<String> sortAdapter = new ArrayAdapter<>(MovieListActivity.this,
                 R.layout.item_spinner,

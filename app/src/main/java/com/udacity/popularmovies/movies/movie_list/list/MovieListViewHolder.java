@@ -20,7 +20,7 @@ class MovieListViewHolder extends RecyclerView.ViewHolder {
     ImageView movieImage;
 
     private final MovieListAdapter.MovieClickCallBack movieClickCallBack;
-    private String baseImageUrl;
+    private final String baseImageUrl;
 
     MovieListViewHolder(@NonNull View itemView, @Nullable MovieListAdapter.MovieClickCallBack movieClickCallBack) {
         super(itemView);
@@ -28,7 +28,7 @@ class MovieListViewHolder extends RecyclerView.ViewHolder {
 
         this.movieClickCallBack = movieClickCallBack;
 
-        baseImageUrl = itemView.getContext().getString(R.string.base_image_url);
+        baseImageUrl = itemView.getContext().getString(R.string.movie_base_image_url);
     }
 
     void bind(ResultDto movie) {

@@ -1,7 +1,6 @@
 package com.udacity.popularmovies.movies.movie_detail;
 
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -35,8 +34,6 @@ public class MovieDetailActivity extends AppCompatActivity {
     @BindView(R.id.movie_detail_rating)
     RatingBar movieDetailRating;
 
-    ResultDto movieDetail;
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,13 +44,13 @@ public class MovieDetailActivity extends AppCompatActivity {
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         movieDetailToolbar.setNavigationOnClickListener(view -> onBackPressed());
 
-        movieDetail = (ResultDto) getIntent().getSerializableExtra("movie_detail");
+        ResultDto movieDetail = (ResultDto) getIntent().getSerializableExtra("movie_detail");
         renderMovieDetail(movieDetail);
     }
 
     private void renderMovieDetail(ResultDto movieDetail) {
 
-        final String baseImageUrl = getString(R.string.base_image_url);
+        final String baseImageUrl = getString(R.string.movie_base_image_url);
         final String posterPath = movieDetail.getPosterPath();
         final String url = baseImageUrl + posterPath;
 
@@ -63,7 +60,7 @@ public class MovieDetailActivity extends AppCompatActivity {
 
         Objects.requireNonNull(getSupportActionBar()).setTitle(movieDetail.getTitle());
         movieDetailReleaseDate.setText(movieDetail.getReleaseDate());
-        movieDetailRating.setRating(movieDetail.getVoteAverage().floatValue()/2);
+        movieDetailRating.setRating(movieDetail.getVoteAverage().floatValue() / 2);
         movieDetailOverview.setText(movieDetail.getOverview());
 
     }

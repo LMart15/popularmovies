@@ -7,7 +7,7 @@ import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
 
-public interface MovieListService {
+interface MovieListService {
 
     @GET("movie/{sort_type}")
     Call<MoviesDto> getMovies(@Path("sort_type") String sortType);

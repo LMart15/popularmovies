@@ -11,6 +11,7 @@ import com.udacity.popularmovies.movies.movie_list.networking.model.MoviesDto;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import timber.log.Timber;
 
 public class MovieListNetworkClient {
 
@@ -26,7 +27,7 @@ public class MovieListNetworkClient {
 
         Call<MoviesDto> moviesDtoCall = movieService.getMovies(sortType);
 
-         moviesDtoCall.enqueue(new Callback<MoviesDto>() {
+        moviesDtoCall.enqueue(new Callback<MoviesDto>() {
             @Override
             public void onResponse(Call<MoviesDto> call, Response<MoviesDto> response) {
                 moviesDtoCallback.onResponse(call, response);
@@ -34,7 +35,7 @@ public class MovieListNetworkClient {
 
             @Override
             public void onFailure(Call<MoviesDto> call, Throwable t) {
-
+                Timber.e(t);
             }
         });
     }
