@@ -1,17 +1,22 @@
 
 package com.udacity.popularmovies.movies.movie_list.networking.model;
 
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
-import java.util.List;
 
-public class ResultDto implements Serializable {
+@Entity
+public class MovieDto implements Serializable {
 
     @SerializedName("vote_count")
     @Expose
     private Integer voteCount;
+
+    @PrimaryKey
     @SerializedName("id")
     @Expose
     private Integer id;
@@ -36,9 +41,6 @@ public class ResultDto implements Serializable {
     @SerializedName("original_title")
     @Expose
     private String originalTitle;
-    @SerializedName("genre_ids")
-    @Expose
-    private List<Integer> genreIds = null;
     @SerializedName("backdrop_path")
     @Expose
     private String backdropPath;
@@ -122,14 +124,6 @@ public class ResultDto implements Serializable {
 
     public void setOriginalTitle(String originalTitle) {
         this.originalTitle = originalTitle;
-    }
-
-    public List<Integer> getGenreIds() {
-        return genreIds;
-    }
-
-    public void setGenreIds(List<Integer> genreIds) {
-        this.genreIds = genreIds;
     }
 
     public String getBackdropPath() {

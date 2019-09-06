@@ -10,15 +10,15 @@ import androidx.recyclerview.widget.DiffUtil;
 
 import com.udacity.popularmovies.R;
 import com.udacity.popularmovies.core.BaseAdapter;
-import com.udacity.popularmovies.movies.movie_list.networking.model.ResultDto;
+import com.udacity.popularmovies.movies.movie_list.networking.model.MovieDto;
 
 
-public class MovieListAdapter extends BaseAdapter<ResultDto, MovieListViewHolder> {
+public class MovieListAdapter extends BaseAdapter<MovieDto, MovieListViewHolder> {
 
     @Nullable
     private MovieClickCallBack movieClickCallBack;
 
-    public MovieListAdapter(@NonNull final DiffUtil.ItemCallback<ResultDto> diffCallback) {
+    public MovieListAdapter(@NonNull final DiffUtil.ItemCallback<MovieDto> diffCallback) {
         super(diffCallback);
     }
 
@@ -39,7 +39,7 @@ public class MovieListAdapter extends BaseAdapter<ResultDto, MovieListViewHolder
     }
 
     public interface MovieClickCallBack {
-        void onMovieClicked(ResultDto movie);
+        void onMovieClicked(MovieDto movie);
     }
 
 }

@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
 import com.udacity.popularmovies.R;
-import com.udacity.popularmovies.movies.movie_list.networking.model.ResultDto;
+import com.udacity.popularmovies.movies.movie_list.networking.model.MovieDto;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -31,7 +31,7 @@ class MovieListViewHolder extends RecyclerView.ViewHolder {
         baseImageUrl = itemView.getContext().getString(R.string.movie_base_image_url);
     }
 
-    void bind(ResultDto movie) {
+    void bind(MovieDto movie) {
 
         final String posterPath = movie.getPosterPath();
         final String url = baseImageUrl + posterPath;
