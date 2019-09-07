@@ -1,7 +1,7 @@
 # Popular Movies App
 
 ## Project Overview
-This is Stage 1 of the Popular Movies app project for the Udacity Android Developer nanodegree
+This is Stage 2 of the Popular Movies app project for the Udacity Android Developer nanodegree
 
 ## Note:
 
